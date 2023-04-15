@@ -11,3 +11,7 @@ EditorBuildSettings:
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7dc55cd1cdf5c4bd290e855d88dc8b85, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 15da14b5f63ac4e649eb4081ac61d200, type: 2}
+<<<<<<< Updated upstream
+=======
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9c04c01eb155740e39d1b3ca45d21be9, type: 2}
+>>>>>>> Stashed changes
