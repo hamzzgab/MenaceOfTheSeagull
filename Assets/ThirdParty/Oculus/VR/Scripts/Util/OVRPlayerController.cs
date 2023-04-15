@@ -194,6 +194,7 @@ public class OVRPlayerController : MonoBehaviour
 			CameraRig = CameraRigs[0];
 
 		InitialYRotation = transform.rotation.eulerAngles.y;
+
 	}
 
 	void OnEnable()
