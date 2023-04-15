@@ -182,11 +182,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< Updated upstream
-    "com.unity.xr.legacyinputhelpers": {
-      "version": "2.1.10",
-      "depth": 2,
-=======
     "com.unity.xr.core-utils": {
       "version": "2.0.1",
       "depth": 1,
@@ -214,7 +209,6 @@
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.10",
       "depth": 1,
->>>>>>> Stashed changes
       "source": "registry",
       "dependencies": {
         "com.unity.modules.vr": "1.0.0",
@@ -236,11 +230,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.oculus": {
-<<<<<<< Updated upstream
-      "version": "3.3.0",
-=======
       "version": "3.2.3",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -248,8 +238,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< Updated upstream
-=======
     "com.unity.xr.openxr": {
       "version": "1.6.0",
       "depth": 1,
@@ -261,7 +249,6 @@
       },
       "url": "https://packages.unity.com"
     },
->>>>>>> Stashed changes
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
