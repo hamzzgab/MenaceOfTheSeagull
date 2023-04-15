@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 8997756601476476984}
   - component: {fileID: 8997756601476476985}
   - component: {fileID: 8997756601476476986}
+  - component: {fileID: 3406719990491102732}
+  - component: {fileID: -8411270050411816500}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8997756601476476991
 Transform:
@@ -99,6 +101,40 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -69760931014144829, guid: 3d6185c1ac8cf4f98b060f3edae83e38, type: 3}
+--- !u!95 &3406719990491102732
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8997756601476476987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b331a52722d1d4028abe78459dbce80f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-8411270050411816500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8997756601476476987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6a1c4b04ed44c3884b63409197fca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestAnimator: {fileID: 3406719990491102732}
+  OpenVar: 0
 --- !u!1 &8997756601507724690
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +152,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8997756601507724689
 Transform:
