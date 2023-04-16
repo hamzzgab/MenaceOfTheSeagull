@@ -135,7 +135,10 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 7dc55cd1cdf5c4bd290e855d88dc8b85, type: 2}
+  - {fileID: -8561989815920584407, guid: 15da14b5f63ac4e649eb4081ac61d200, type: 2}
+  - {fileID: -8045755870888508445, guid: 2213bb42bdcd34a90b3fb8d33932849d, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -465,6 +468,9 @@ PlayerSettings:
   m_BuildTargetGraphicsJobMode: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
+    m_APIs: 15000000
+    m_Automatic: 0
+  - m_BuildTarget: WindowsStandaloneSupport
     m_APIs: 15000000
     m_Automatic: 0
   m_BuildTargetVRSettings: []
