@@ -3072,6 +3072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569563749}
+  - component: {fileID: 1569563750}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -3098,6 +3099,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569563750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569563748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a55c0b2fc3024584b401db48b888abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestPrefab: {fileID: 8997756601476476987, guid: b3d7d4550a4c043b3a5f4a36cd6bbe72, type: 3}
+  SpawnPoints:
+  - {fileID: 1945319502}
+  - {fileID: 2019296289}
+  - {fileID: 1321668504}
+  - {fileID: 469833489}
 --- !u!1001 &1575503626
 PrefabInstance:
   m_ObjectHideFlags: 0
