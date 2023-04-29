@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log($"Collided: {other.gameObject.name}");
         if (other.gameObject.tag == "Box")
         {
-            Debug.Log("Collided!");
+            Debug.Log("Collided!");            
             ChestBehaviour behaviour_script = other.GetComponent<ChestBehaviour>();
             if(behaviour_script != null)
             {
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void EnableMeshes(Transform gameObject)
-    {
+    {        
         Debug.Log(gameObject.name);
         MeshRenderer object_mesh = gameObject.gameObject.GetComponent<MeshRenderer>();
         if (object_mesh != null)
