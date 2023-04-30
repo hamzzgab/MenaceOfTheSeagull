@@ -52,6 +52,13 @@ public class PlayerBehaviourScript : MonoBehaviour
         GlobalsManager.Player = this.gameObject;
     }
 
+    public IEnumerator Vibrator()
+    {
+        OVRInput.SetControllerVibration(1f, 0.3f);
+        yield return new WaitForSeconds(0.1f);
+        OVRInput.SetControllerVibration(0f, 0f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -65,8 +72,9 @@ public class PlayerBehaviourScript : MonoBehaviour
                 IsShowingDeathMenu = true;
             }
         }
-        if(Input.GetMouseButton(0))
+        if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
+            StartCoroutine(Vibrator());
             HasFireHeldDown = true;
             CurrentEnergy = Mathf.Lerp(CurrentEnergy, MaxEnergy, EnergyMultiplier);
         }
@@ -79,12 +87,14 @@ public class PlayerBehaviourScript : MonoBehaviour
             }
         }
         EnergyBarForeground.rectTransform.sizeDelta = new Vector3((EnergyBarMaxWidth / MaxEnergy) * CurrentEnergy, EnergyBarBackground.rectTransform.sizeDelta.y);
-        if(Input.GetMouseButtonUp(0))
+        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             HasFireHeldDown = false;
-        }
-        if(Input.GetMouseButtonDown(1))
+        }        
+
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
         {
+            StartCoroutine(Vibrator());
             if (CurrentEnergy > 0)
             {
                 GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position, Quaternion.identity);

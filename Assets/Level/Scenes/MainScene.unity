@@ -630,6 +630,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c191cc4231bc1a940986671275027664, type: 3}
+--- !u!1 &165585583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 249265445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &165585584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 249265445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &171370903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255564010784150796, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}
@@ -3068,10 +3078,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthScript: {fileID: 0}
-  RockPrefab: {fileID: 0}
+  RockPrefab: {fileID: 117232, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
   IsShowingDeathMenu: 0
-  Camera: {fileID: 0}
-  CameraFront: {fileID: 0}
+  Camera: {fileID: 165585583}
+  CameraFront: {fileID: 1590586413}
   TotalCoins: 500
   TotalFood: 500
   TotalFoodUI: {fileID: 1940721786}
@@ -3082,9 +3092,9 @@ MonoBehaviour:
   EnergyBarForeground: {fileID: 1940721789}
   HasFireHeldDown: 0
   EnergyBarMaxWidth: 0
-  MaxEnergy: 1200
+  MaxEnergy: 5000
   CurrentEnergy: 0
-  EnergyMultiplier: 0.001
+  EnergyMultiplier: 1000
 --- !u!4 &979585405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
@@ -4493,6 +4503,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
+--- !u!1 &1590586413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590586414}
+  m_Layer: 0
+  m_Name: CameraForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1590586414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590586413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 165585584}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1594931297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255818761383335085, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}

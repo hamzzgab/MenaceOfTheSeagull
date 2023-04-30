@@ -46,6 +46,13 @@ public class EagleBehaviour : MonoBehaviour
         DifferenceInAttacks = Random.Range(DifferenceInAttackRange[0], DifferenceInAttackRange[1]);
     }
 
+    public IEnumerator Vibrator()
+    {
+        OVRInput.SetControllerVibration(1f, 1f);
+        yield return new WaitForSeconds(1f);
+        OVRInput.SetControllerVibration(0f, 0f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,6 +91,7 @@ public class EagleBehaviour : MonoBehaviour
                             HealthScript playerHealthScript = Player.GetComponent<HealthScript>();
                             if (playerHealthScript != null)
                             {
+                                StartCoroutine(Vibrator());
                                 playerHealthScript.GiveDamage(DamageSize);
                             }
                             if (playerBehaviourScript != null)
