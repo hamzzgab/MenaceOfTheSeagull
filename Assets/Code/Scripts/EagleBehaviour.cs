@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EagleBehaviour : MonoBehaviour
 {
+    [Header("Scripts/Variables")]
     public HealthScript healthScript;
     public GameObject Player;
     public Animator EagleAnimator;
-
+    public bool IsActivated = false;
+    [Header("Debug related variables")]
+    public float DebugDistanceVariable = 0.0f;
+    [Header("Characteristics - Attack related")]
     public float DistanceRadar = 10.0f;
     public float DistanceAttack = 0.75f;
     public float LerpMultiplier = 0.1f;
-    public bool IsActivated = false;
-
-    public float DebugDistanceVariable = 0.0f;
-
     public float LastAttackTime = 0.0f;
-
     public float DifferenceInAttacks = 6.0f;
-
     public float[] DifferenceInAttackRange = new float[2];
-
     public float DamageSize = 1.0f;
-
+    [Header("Characteristics - Death related")]
     public bool HasPlayedDeathAnimation = false;
-
+    [Header("GUI Elements - Health bar")]
+    public Image HealthBar;
+    public Image HealthBarBackground;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +39,8 @@ public class EagleBehaviour : MonoBehaviour
         {
             healthScript = this.AddComponent<HealthScript>();
         }
+        healthScript.HealthBar = this.HealthBar;
+        healthScript.HealthBarBackground = this.HealthBarBackground;
         DamageSize = Random.Range(1.0f, 10.0f);
         LerpMultiplier = Random.Range(0.1f, 2.0f);
         DifferenceInAttacks = Random.Range(DifferenceInAttackRange[0], DifferenceInAttackRange[1]);
@@ -47,7 +49,13 @@ public class EagleBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Player == null)
+        {
+            if(GlobalsManager.Player != null)
+            {
+                Player = GlobalsManager.Player;
+            }
+        }
         if (Player != null)
         {
             if (IsActivated)

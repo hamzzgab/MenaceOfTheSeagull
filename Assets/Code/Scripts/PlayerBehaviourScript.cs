@@ -10,38 +10,32 @@ public class PlayerBehaviourScript : MonoBehaviour
 {
 
 
-
+    [Header("Variables")]
     public HealthScript healthScript;
-
+    public GameObject RockPrefab;
     public bool IsShowingDeathMenu;
-
-    public GameObject[] Hearts;
-
-
+    [Header("Camera Related Settings")]
+    public GameObject Camera;
+    public GameObject CameraFront;
     [Header("Inventory - Items")]
     public int TotalCoins = 0;
     public int TotalFood = 0;
     [Header("GUI Elements - Inventory")]
     public TMP_Text TotalFoodUI;
     public TMP_Text TotalCoinsUI;
-
-
-
-    public GameObject Camera;
-    public GameObject CameraFront;
-    public bool HasFireHeldDown = false;
-
+    [Header("GUI Elements - Health bar")]
+    public Image HealthBar;
+    public Image HealthBarBackground;
+    [Header("GUI Elements - Energy bar")]
     public Image EnergyBarBackground;
     public Image EnergyBarForeground;
+    
+    [Header("Variables - Energy")]
+    public bool HasFireHeldDown = false;
     public float EnergyBarMaxWidth;
     public float MaxEnergy = 1000.0f;
     public float CurrentEnergy = 0.0f;
     public float EnergyMultiplier = 0.001f;
-
-    public GameObject DummyRockPrefab;
-    //public Vector3 DummyRockScale = new Vector3(0.005f, 0.005f, 0.005f);
-
-    
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +44,12 @@ public class PlayerBehaviourScript : MonoBehaviour
         if(healthScript == null)
         {
             healthScript = this.AddComponent<HealthScript>();
+            
         }
-
+        healthScript.HealthBar = this.HealthBar;
+        healthScript.HealthBarBackground = this.HealthBarBackground;
         EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;
+        GlobalsManager.Player = this.gameObject;
     }
 
     // Update is called once per frame
@@ -90,7 +87,7 @@ public class PlayerBehaviourScript : MonoBehaviour
         {
             if (CurrentEnergy > 0)
             {
-                GameObject instantiated_object = GameObject.Instantiate(DummyRockPrefab, Camera.transform.position, Quaternion.identity);
+                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position, Quaternion.identity);
                 Rigidbody body = instantiated_object.GetComponent<Rigidbody>();
 
                 body.AddForce((CameraFront.transform.position - Camera.transform.position).normalized * CurrentEnergy, ForceMode.Force);

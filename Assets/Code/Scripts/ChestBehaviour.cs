@@ -9,6 +9,7 @@ public class ChestBehaviour : MonoBehaviour
     public GameObject ChestObject;
     public GameObject ChestLidObject;
     public GameObject ChestPrizeObject;
+    public GameObject TargetPrizeObject;
 
     public Animator ChestAnimator;
 
@@ -56,6 +57,11 @@ public class ChestBehaviour : MonoBehaviour
         foreach (Transform child in children)
         {
             ToggleMeshRenderer(child.gameObject, true);
+        }
+        if(TargetPrizeObject.name.Contains("Eagle_Elite"))
+        {
+            TargetPrizeObject.SetActive(true);
+            TargetPrizeObject.GetComponent<EagleBehaviour>().IsActivated = true;
         }
         Collider.enabled = false;
         OpenVar = true;

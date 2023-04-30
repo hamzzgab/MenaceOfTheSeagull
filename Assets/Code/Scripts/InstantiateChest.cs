@@ -27,6 +27,12 @@ public class InstantiateChest : MonoBehaviour
                 if(child.name == ChestPrefabItemSpawnLocStr)
                 {   
                     GameObject mysteryobj = Instantiate(MysteryObject[randomNumber], child.transform);
+                    result.GetComponent<ChestBehaviour>().TargetPrizeObject = mysteryobj;
+                    if (mysteryobj.name.Contains("Eagle_Elite"))
+                    {
+                        mysteryobj.GetComponent<EagleBehaviour>().IsActivated = false;
+                        mysteryobj.SetActive(false);
+                    }
                     MeshRenderer prize_mesh = mysteryobj.GetComponent<MeshRenderer>();
                     if(prize_mesh != null)
                     {
