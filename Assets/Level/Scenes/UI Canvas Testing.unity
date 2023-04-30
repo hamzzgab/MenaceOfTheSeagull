@@ -924,6 +924,9 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 5
       objectReference: {fileID: 0}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
 --- !u!114 &1097860524206459922 stripped

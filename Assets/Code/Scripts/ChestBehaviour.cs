@@ -24,7 +24,7 @@ public class ChestBehaviour : MonoBehaviour
     }
     public void Update()
     {
-        ChestAnimator.SetBool("Open", OpenVar);
+        ChestAnimator.SetBool("Open", OpenVar);        
     }
 
     public void HideChest()
@@ -38,8 +38,18 @@ public class ChestBehaviour : MonoBehaviour
             ToggleMeshRenderer(child.gameObject, false);
         }
     }
+
+    public IEnumerator Vibrator()
+    {
+        OVRInput.SetControllerVibration(1f, 0.3f);
+        yield return new WaitForSeconds(0.5f);
+        OVRInput.SetControllerVibration(0f, 0f);
+    }
+
     public void ShowChest()
     {
+        StartCoroutine(Vibrator());
+        //OVRInput.SetControllerVibration(1f, 1f);
         ToggleMeshRenderer(ChestObject, true);
         ToggleMeshRenderer(ChestLidObject, true);
         Transform[] children = ChestPrizeObject.GetComponentsInChildren<Transform>();
@@ -49,7 +59,6 @@ public class ChestBehaviour : MonoBehaviour
         }
         Collider.enabled = false;
         OpenVar = true;
-        
     }
     public void ToggleMeshRenderer(GameObject gameObject, bool toggle)
     {
