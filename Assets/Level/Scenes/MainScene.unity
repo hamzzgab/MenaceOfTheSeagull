@@ -412,7 +412,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300001, guid: 1dd706bb85d8aef4e83a6229dbd62c36, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 934d3145f8c7b480997e043964bb5251, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c0fc12c4a21a946e1b9510eff8269938, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2139,15 +2139,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 56.597
+      value: 56.73
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.899
+      value: 23.319
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.941
+      value: 44.096
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4358,6 +4358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1097860522199063182, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1097860522199063216, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -4508,7 +4512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097860523915756977, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1097860523915756977, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
       propertyPath: m_AnchoredPosition.y
