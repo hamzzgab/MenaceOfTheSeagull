@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerBehaviourScript : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class PlayerBehaviourScript : MonoBehaviour
     public float MaxEnergy = 1000.0f;
     public float CurrentEnergy = 0.0f;
     public float EnergyMultiplier = 0.001f;
+
+    public GameObject button;
 
     // Start is called before the first frame update
     void Start()
@@ -95,9 +98,10 @@ public class PlayerBehaviourScript : MonoBehaviour
         if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
         {
             StartCoroutine(Vibrator());
+
             if (CurrentEnergy > 0)
             {
-                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position, Quaternion.identity);
+                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position + (Camera.transform.position - CameraFront.transform.position).normalized * CameraFront.transform.position.magnitude, Quaternion.identity);
                 Rigidbody body = instantiated_object.GetComponent<Rigidbody>();
 
                 body.AddForce((CameraFront.transform.position - Camera.transform.position).normalized * CurrentEnergy, ForceMode.Force);
@@ -105,6 +109,10 @@ public class PlayerBehaviourScript : MonoBehaviour
             }
 
         }
+
+
+        TextMeshPro tmp = button.GetComponent<TextMeshPro>();
+        tmp.text = CurrentEnergy.ToString();
     }
 
     public void AddFoodItem(int TotalFoodItem)

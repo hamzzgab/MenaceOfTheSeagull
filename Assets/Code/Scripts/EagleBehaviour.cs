@@ -48,8 +48,8 @@ public class EagleBehaviour : MonoBehaviour
 
     public IEnumerator Vibrator()
     {
-        OVRInput.SetControllerVibration(1f, 1f);
-        yield return new WaitForSeconds(1f);
+        OVRInput.SetControllerVibration(1f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         OVRInput.SetControllerVibration(0f, 0f);
     }
 
