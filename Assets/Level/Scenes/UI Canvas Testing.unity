@@ -280,24 +280,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthScript: {fileID: 0}
+  RockPrefab: {fileID: 117232, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
   IsShowingDeathMenu: 0
-  Hearts: []
+  Camera: {fileID: 1421985943}
+  CameraFront: {fileID: 623282947}
   TotalCoins: 0
   TotalFood: 0
   TotalFoodUI: {fileID: 1110532342}
   TotalCoinsUI: {fileID: 1342582881}
   HealthBar: {fileID: 1097860524206459925}
   HealthBarBackground: {fileID: 1097860524206459924}
-  Camera: {fileID: 1421985943}
-  CameraFront: {fileID: 623282947}
-  HasFireHeldDown: 0
   EnergyBarBackground: {fileID: 1097860524206459923}
   EnergyBarForeground: {fileID: 1097860524206459922}
+  HasFireHeldDown: 0
   EnergyBarMaxWidth: 0
   MaxEnergy: 1000
   CurrentEnergy: 0
   EnergyMultiplier: 0.01
-  DummyRockPrefab: {fileID: 117232, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
 --- !u!1 &623282947
 GameObject:
   m_ObjectHideFlags: 0
