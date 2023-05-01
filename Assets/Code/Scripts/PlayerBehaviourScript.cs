@@ -51,8 +51,17 @@ public class PlayerBehaviourScript : MonoBehaviour
         }
         healthScript.HealthBar = this.HealthBar;
         healthScript.HealthBarBackground = this.HealthBarBackground;
-        EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;
+        EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;        
         GlobalsManager.Player = this.gameObject;
+    }
+
+    public void Reset()
+    {
+        TotalCoins = 0;
+        TotalFood = 0;
+
+        healthScript = this.GetComponent<HealthScript>();
+        healthScript.SetHealth(100.0f);
     }
 
     public IEnumerator VibratorEx(float waitSec, float intensity)
