@@ -21,10 +21,12 @@ public class ChestBehaviour : MonoBehaviour
     {
         Collider = GetComponent<BoxCollider>();
     }
+
     public void Open()
     {
         
     }
+
     public void Update()
     {
         ChestAnimator.SetBool("Open", OpenVar);        
@@ -51,11 +53,10 @@ public class ChestBehaviour : MonoBehaviour
 
     public void ShowChest()
     {
-        StartCoroutine(Vibrator());
-
-        ParticleSystem ps = GameObject.Find("Sparks").GetComponent<ParticleSystem>();
-        Debug.Log("Particle System");
-        Debug.Log(GameObject.Find("Sparks"));
+        if (GlobalsManager.Haptics)
+        {
+            StartCoroutine(Vibrator());
+        }
 
         ToggleMeshRenderer(ChestObject, true);
         ToggleMeshRenderer(ChestLidObject, true);
@@ -70,8 +71,7 @@ public class ChestBehaviour : MonoBehaviour
             TargetPrizeObject.GetComponent<EagleBehaviour>().IsActivated = true;
         }
         Collider.enabled = false;
-        OpenVar = true;
-        ps.Play();
+        OpenVar = true;       
     }
     public void ToggleMeshRenderer(GameObject gameObject, bool toggle)
     {

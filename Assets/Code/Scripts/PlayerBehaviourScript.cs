@@ -84,7 +84,11 @@ public class PlayerBehaviourScript : MonoBehaviour
         }
         if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
-            StartCoroutine(VibratorEx(0.1f, 0.1f));
+            if (GlobalsManager.Haptics)
+            {
+                StartCoroutine(VibratorEx(0.1f, 0.1f));
+            }
+            
             HasFireHeldDown = true;
             CurrentEnergy = Mathf.Lerp(CurrentEnergy, MaxEnergy, EnergyMultiplier);
         }
