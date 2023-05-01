@@ -27,6 +27,9 @@ public class EagleBehaviour : MonoBehaviour
     public Image HealthBar;
     public Image HealthBarBackground;
     // Start is called before the first frame update
+
+    public AudioSource audio;
+
     void Start()
     {
         EagleAnimator = GetComponent<Animator>();
@@ -86,6 +89,7 @@ public class EagleBehaviour : MonoBehaviour
                     {
                         if (Time.time - LastAttackTime > DifferenceInAttacks)
                         {
+                            audio.Play();
                             EagleAnimator.SetTrigger("Attack");
                             PlayerBehaviourScript playerBehaviourScript = Player.GetComponent<PlayerBehaviourScript>();
                             HealthScript playerHealthScript = Player.GetComponent<HealthScript>();

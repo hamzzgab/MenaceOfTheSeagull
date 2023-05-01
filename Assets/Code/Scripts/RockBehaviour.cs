@@ -33,8 +33,11 @@ public class RockBehaviour : MonoBehaviour
             
             if (eagle_health_script != null)
             {
-                eagle_behaviour.EagleAnimator.SetTrigger("Hit");
-                eagle_health_script.GiveDamage(Random.Range(5.0f, 10.0f));
+                if (!eagle_health_script.IsDead )
+                {
+                    eagle_behaviour.EagleAnimator.SetTrigger("Hit");
+                    eagle_health_script.GiveDamage(Random.Range(5.0f, 25.0f));
+                }
             }
             //Destroy(this.gameObject);
         }

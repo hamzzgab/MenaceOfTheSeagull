@@ -13,6 +13,8 @@ public class ChestBehaviour : MonoBehaviour
 
     public Animator ChestAnimator;
 
+
+
     public bool OpenVar = false;
 
     public void Start()
@@ -50,7 +52,11 @@ public class ChestBehaviour : MonoBehaviour
     public void ShowChest()
     {
         StartCoroutine(Vibrator());
-        //OVRInput.SetControllerVibration(1f, 1f);
+
+        //ParticleSystem ps = GameObject.Find("Sparks").GetComponent<ParticleSystem>();
+        //Debug.Log("Particle System");
+        //Debug.Log(GameObject.Find("Sparks"));
+
         ToggleMeshRenderer(ChestObject, true);
         ToggleMeshRenderer(ChestLidObject, true);
         Transform[] children = ChestPrizeObject.GetComponentsInChildren<Transform>();
@@ -65,6 +71,7 @@ public class ChestBehaviour : MonoBehaviour
         }
         Collider.enabled = false;
         OpenVar = true;
+        //ps.Play();s
     }
     public void ToggleMeshRenderer(GameObject gameObject, bool toggle)
     {

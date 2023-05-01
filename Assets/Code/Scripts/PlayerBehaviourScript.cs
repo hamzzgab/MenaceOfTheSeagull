@@ -55,9 +55,16 @@ public class PlayerBehaviourScript : MonoBehaviour
         GlobalsManager.Player = this.gameObject;
     }
 
+    public IEnumerator VibratorEx(float waitSec, float intensity)
+    {
+        OVRInput.SetControllerVibration(1f, intensity, OVRInput.Controller.LHand);
+        yield return new WaitForSeconds(waitSec);
+        OVRInput.SetControllerVibration(0f, 0f);
+    }
+
     public IEnumerator Vibrator()
     {
-        OVRInput.SetControllerVibration(1f, 0.3f);
+        OVRInput.SetControllerVibration(1f, 0.1f);
         yield return new WaitForSeconds(0.1f);
         OVRInput.SetControllerVibration(0f, 0f);
     }
@@ -77,7 +84,7 @@ public class PlayerBehaviourScript : MonoBehaviour
         }
         if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
-            StartCoroutine(Vibrator());
+            StartCoroutine(VibratorEx(0.1f, 0.1f));
             HasFireHeldDown = true;
             CurrentEnergy = Mathf.Lerp(CurrentEnergy, MaxEnergy, EnergyMultiplier);
         }
@@ -97,11 +104,9 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
         {
-            StartCoroutine(Vibrator());
-
             if (CurrentEnergy > 0)
             {
-                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position + (Camera.transform.position - CameraFront.transform.position).normalized * CameraFront.transform.position.magnitude, Quaternion.identity);
+                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position + (CameraFront.transform.position - Camera.transform.position ).normalized , Quaternion.identity);
                 Rigidbody body = instantiated_object.GetComponent<Rigidbody>();
 
                 body.AddForce((CameraFront.transform.position - Camera.transform.position).normalized * CurrentEnergy, ForceMode.Force);
