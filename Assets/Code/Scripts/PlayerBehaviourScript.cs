@@ -57,8 +57,10 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     public void Reset()
     {
-        TotalCoins = 0;
-        TotalFood = 0;
+        StartCoroutine(Vibrator());
+
+        TotalCoins = 500;
+        TotalFood = 500;
 
         healthScript = this.GetComponent<HealthScript>();
         healthScript.SetHealth(100.0f);
@@ -128,8 +130,13 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         }
 
+        if (OVRInput.GetDown(OVRInput.Button.One))
+        {
+            Reset();
+        }
 
-        TextMeshPro tmp = button.GetComponent<TextMeshPro>();
+
+            TextMeshPro tmp = button.GetComponent<TextMeshPro>();
         tmp.text = CurrentEnergy.ToString();
     }
 

@@ -47,7 +47,7 @@ public class ChestBehaviour : MonoBehaviour
     public IEnumerator Vibrator()
     {
         OVRInput.SetControllerVibration(1f, 0.3f);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         OVRInput.SetControllerVibration(0f, 0f);
     }
 
