@@ -53,9 +53,9 @@ public class ChestBehaviour : MonoBehaviour
     {
         StartCoroutine(Vibrator());
 
-        //ParticleSystem ps = GameObject.Find("Sparks").GetComponent<ParticleSystem>();
-        //Debug.Log("Particle System");
-        //Debug.Log(GameObject.Find("Sparks"));
+        ParticleSystem ps = GameObject.Find("Sparks").GetComponent<ParticleSystem>();
+        Debug.Log("Particle System");
+        Debug.Log(GameObject.Find("Sparks"));
 
         ToggleMeshRenderer(ChestObject, true);
         ToggleMeshRenderer(ChestLidObject, true);
@@ -71,7 +71,7 @@ public class ChestBehaviour : MonoBehaviour
         }
         Collider.enabled = false;
         OpenVar = true;
-        //ps.Play();s
+        ps.Play();
     }
     public void ToggleMeshRenderer(GameObject gameObject, bool toggle)
     {
