@@ -3822,6 +3822,7 @@ GameObject:
   - component: {fileID: 904935435}
   - component: {fileID: 904935436}
   - component: {fileID: 904935437}
+  - component: {fileID: 904935438}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -3958,6 +3959,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &904935438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904935430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db67b6cf8fc0c34f9d4e2f630fb4107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthScript: {fileID: 0}
+  RockPrefab: {fileID: 117232, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
+  IsShowingDeathMenu: 0
+  Camera: {fileID: 1972003614}
+  CameraFront: {fileID: 1942670594}
+  TotalCoins: 500
+  TotalFood: 500
+  TotalFoodUI: {fileID: 1940721786}
+  TotalCoinsUI: {fileID: 1940721786}
+  HealthBar: {fileID: 1940721787}
+  HealthBarBackground: {fileID: 1940721788}
+  EnergyBarBackground: {fileID: 0}
+  EnergyBarForeground: {fileID: 0}
+  HasFireHeldDown: 0
+  EnergyBarMaxWidth: 0
+  MaxEnergy: 1000
+  CurrentEnergy: 0
+  EnergyMultiplier: 0.001
+  button: {fileID: 0}
 --- !u!1 &919227628
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,6 +6750,7 @@ MonoBehaviour:
   MysteryObject:
   - {fileID: 1537502993957880, guid: 30bdbf2b9c0bd8446af70e5b67b0dfc8, type: 3}
   - {fileID: 1950871307682000, guid: 01348926c7cbb3347a006c37204131c3, type: 3}
+  ChestObjects: []
 --- !u!1 &1577749883
 GameObject:
   m_ObjectHideFlags: 0
@@ -8930,6 +8963,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1942670594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1942670595}
+  m_Layer: 0
+  m_Name: CameraForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1942670595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942670594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1972003618}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945319502
 GameObject:
   m_ObjectHideFlags: 0
@@ -9127,7 +9191,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1942670595}
   m_Father: {fileID: 904935434}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

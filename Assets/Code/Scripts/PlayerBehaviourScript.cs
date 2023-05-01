@@ -130,6 +130,24 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         }
 
+        if (OVRInput.GetDown(OVRInput.Button.Two))
+        {
+            if (TotalFood > 0)
+            {
+                healthScript = this.GetComponent<HealthScript>();
+
+                float CurrentHealth = healthScript.GetHealth();
+
+                if (CurrentHealth < 100.0f)
+                {
+                    TotalFood -= 5;
+                    CurrentHealth += 5;
+
+                    healthScript.SetHealth(CurrentHealth);
+                }
+            }
+        }
+
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
             Reset();
