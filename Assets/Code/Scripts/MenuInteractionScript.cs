@@ -23,6 +23,7 @@ public class MenuInteractionScript : MonoBehaviour
     {
         if (GlobalsManager.Volume < 1.0f)
         {
+            AudioListener.volume += 0.1f;
             GlobalsManager.Volume += 0.1f;
         }        
     }
@@ -31,6 +32,7 @@ public class MenuInteractionScript : MonoBehaviour
     {
         if (GlobalsManager.Volume > 0.0f)
         {
+            AudioListener.volume -= 0.1f;
             GlobalsManager.Volume -= 0.1f;
         }
     }
