@@ -91,7 +91,7 @@ public class PlayerBehaviourScript : MonoBehaviour
                 IsShowingDeathMenu = true;
             }
         }
-        if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+        if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) ||Input.GetMouseButton(0))
         {
             if (GlobalsManager.Haptics)
             {
@@ -110,12 +110,12 @@ public class PlayerBehaviourScript : MonoBehaviour
             }
         }
         EnergyBarForeground.rectTransform.sizeDelta = new Vector3((EnergyBarMaxWidth / MaxEnergy) * CurrentEnergy, EnergyBarBackground.rectTransform.sizeDelta.y);
-        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger) || Input.GetMouseButtonUp(0))
         {
             HasFireHeldDown = false;
         }        
 
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || Input.GetMouseButtonDown(1))
         {
             if (CurrentEnergy > 0)
             {
