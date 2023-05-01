@@ -21,36 +21,22 @@ public class MenuInteractionScript : MonoBehaviour
 
     public void VolumeUp()
     {
-        if (GlobalsManager.Volume < 1.0f)
-        {
-            AudioListener.volume += 0.1f;
-            GlobalsManager.Volume += 0.1f;
-        }        
+        AudioListener.volume += 0.25f;       
     }
 
     public void VolumeDown()
     {
-        if (GlobalsManager.Volume > 0.0f)
-        {
-            AudioListener.volume -= 0.1f;
-            GlobalsManager.Volume -= 0.1f;
-        }
+        AudioListener.volume -= 0.25f;
     }
 
     public void HapticsOn()
     {
-        if (!GlobalsManager.Haptics)
-        {
-            GlobalsManager.Haptics = false;
-        }
+        GlobalsManager.Haptics = true;
     }
 
     public void HapticsOff()
     {
-        if (GlobalsManager.Haptics)
-        {
-            GlobalsManager.Haptics = true;
-        }
+        GlobalsManager.Haptics = false;
     }
 
     public void QuitApplication()

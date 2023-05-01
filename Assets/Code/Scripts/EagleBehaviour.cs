@@ -95,7 +95,11 @@ public class EagleBehaviour : MonoBehaviour
                             HealthScript playerHealthScript = Player.GetComponent<HealthScript>();
                             if (playerHealthScript != null)
                             {
-                                StartCoroutine(Vibrator());
+                                if (GlobalsManager.Haptics)
+                                {
+                                    StartCoroutine(Vibrator());
+                                }
+
                                 playerHealthScript.GiveDamage(DamageSize);
                             }
                             if (playerBehaviourScript != null)

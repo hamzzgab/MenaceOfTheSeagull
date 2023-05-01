@@ -57,8 +57,10 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     public void Reset()
     {
-        TotalCoins = 0;
-        TotalFood = 0;
+        StartCoroutine(Vibrator());
+
+        TotalCoins = 500;
+        TotalFood = 500;
 
         healthScript = this.GetComponent<HealthScript>();
         healthScript.SetHealth(100.0f);
@@ -110,12 +112,12 @@ public class PlayerBehaviourScript : MonoBehaviour
             }
         }
         EnergyBarForeground.rectTransform.sizeDelta = new Vector3((EnergyBarMaxWidth / MaxEnergy) * CurrentEnergy, EnergyBarBackground.rectTransform.sizeDelta.y);
-        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger)) 
         {
             HasFireHeldDown = false;
         }        
 
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+        if(OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
             if (CurrentEnergy > 0)
             {
@@ -128,8 +130,13 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         }
 
+        if (OVRInput.GetDown(OVRInput.Button.One))
+        {
+            Reset();
+        }
 
-        TextMeshPro tmp = button.GetComponent<TextMeshPro>();
+
+            TextMeshPro tmp = button.GetComponent<TextMeshPro>();
         tmp.text = CurrentEnergy.ToString();
     }
 
