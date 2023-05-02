@@ -54,6 +54,13 @@ public class InstantiateChest : MonoBehaviour
             }
         }
     }
+
+    public void ResetChests()
+    {
+        this.DeleteAllChests();
+        this.InitializeChestSpawner();
+    }
+
     public void DeleteAllChests()
     {
         foreach(GameObject chest in this.ChestObjects)
@@ -67,8 +74,7 @@ public class InstantiateChest : MonoBehaviour
     {
         if(OVRInput.Get(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.R))
         {
-            this.DeleteAllChests();
-            this.InitializeChestSpawner();
+            ResetChests();
         }    
     }
     public IEnumerator RespawnChestInSomeTime()

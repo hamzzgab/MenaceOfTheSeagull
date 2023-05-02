@@ -6,5 +6,5 @@ public class GlobalsManager
 {
     public static GameObject Player;
     public static float Volume = 1f;
-    public static bool Haptics = false;
+    public static bool Haptics = true;
 }
