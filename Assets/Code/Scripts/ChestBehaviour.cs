@@ -63,6 +63,12 @@ public class ChestBehaviour : MonoBehaviour
         Transform[] children = ChestPrizeObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
+            if (child.name.Contains("GoldCoins"))
+            {
+                child.GetComponent<GoldCoinBehaviour>().AddCoins();
+                StartCoroutine(HideChildAfterSeconds(child.gameObject, 3.0f)); //Hide the coins after 3 seconds so the player can see what they received in the chest.
+            }
+
             ToggleMeshRenderer(child.gameObject, true);
         }
         if(TargetPrizeObject.name.Contains("Eagle_Elite"))
@@ -82,6 +88,11 @@ public class ChestBehaviour : MonoBehaviour
         {
             renderer.enabled = toggle;
         }
+    }
+    public IEnumerator HideChildAfterSeconds(GameObject obj, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        obj.SetActive(false);
     }
 
 }

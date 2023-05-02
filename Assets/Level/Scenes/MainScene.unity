@@ -4358,6 +4358,10 @@ PrefabInstance:
       propertyPath: SnapRotation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4876655708867420522, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
+      propertyPath: RotateAroundGuardianCenter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5590426684343171892, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5436577

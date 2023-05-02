@@ -57,8 +57,6 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     public void Reset()
     {
-        StartCoroutine(Vibrator());
-
         TotalCoins = 500;
         TotalFood = 500;
 
@@ -117,7 +115,7 @@ public class PlayerBehaviourScript : MonoBehaviour
             HasFireHeldDown = false;
         }        
 
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || Input.GetMouseButtonDown(1))
+        if(OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || Input.GetMouseButtonDown(1))
         {
             if (CurrentEnergy > 0)
             {
@@ -132,7 +130,7 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.Button.Two))
         {
-            if (TotalFood > 0)
+            if (TotalFood - 5 > 0)
             {
                 healthScript = this.GetComponent<HealthScript>();
 
@@ -150,11 +148,27 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
+            if (GlobalsManager.Haptics)
+            {
+                StartCoroutine(Vibrator());
+            }
             Reset();
         }
 
+        if (OVRInput.Get(OVRInput.Touch.SecondaryThumbRest))
+        {
+            if (GlobalsManager.Haptics)
+            {
+                StartCoroutine(Vibrator());
+            }
+            if (TotalCoins - 5 > 0)
+            {
+                TotalCoins -= 5;
+                TotalFood += 5;
+            }
+        }
 
-            TextMeshPro tmp = button.GetComponent<TextMeshPro>();
+        TextMeshPro tmp = button.GetComponent<TextMeshPro>();
         tmp.text = CurrentEnergy.ToString();
     }
 
@@ -164,7 +178,7 @@ public class PlayerBehaviourScript : MonoBehaviour
     }
     public void AddCoins(int TotalCoins)
     {
-        this.TotalFood += TotalCoins;
+        this.TotalCoins += TotalCoins;
     }
     public void DecreaseFoodFromInventory(int TotalFoodItems)
     {

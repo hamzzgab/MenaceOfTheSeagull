@@ -36,11 +36,13 @@ public class InstantiateChest : MonoBehaviour
                 {
                     GameObject mysteryobj = Instantiate(MysteryObject[randomNumber], child.transform);
                     result.GetComponent<ChestBehaviour>().TargetPrizeObject = mysteryobj;
+                    
                     if (mysteryobj.name.Contains("Eagle_Elite"))
                     {
                         mysteryobj.GetComponent<EagleBehaviour>().IsActivated = false;
                         mysteryobj.SetActive(false);
                     }
+
                     MeshRenderer prize_mesh = mysteryobj.GetComponent<MeshRenderer>();
                     if (prize_mesh != null)
                     {
@@ -63,7 +65,7 @@ public class InstantiateChest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(OVRInput.Get(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.R))
         {
             this.DeleteAllChests();
             this.InitializeChestSpawner();
