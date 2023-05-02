@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,6 +684,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c191cc4231bc1a940986671275027664, type: 3}
+--- !u!1 &157520463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157520464}
+  m_Layer: 0
+  m_Name: DefaultSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157520464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157520463}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 56.73, y: 23.319, z: 44.096}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &171370903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255564010784150796, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}
@@ -3984,12 +4015,17 @@ MonoBehaviour:
   HealthBarBackground: {fileID: 1940721788}
   EnergyBarBackground: {fileID: 0}
   EnergyBarForeground: {fileID: 0}
+  DeathMenu: {fileID: 0}
   HasFireHeldDown: 0
   EnergyBarMaxWidth: 0
   MaxEnergy: 1000
   CurrentEnergy: 0
   EnergyMultiplier: 0.001
   button: {fileID: 0}
+  OVRController: {fileID: 0}
+  OldOVRAccelerationValue: 0
+  DefaultSpawnPoint: {fileID: 0}
+  ResetAudio: {fileID: 0}
 --- !u!1 &919227628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,7 +4364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4336,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4348,7 +4384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4500,17 +4536,118 @@ MonoBehaviour:
   HealthBarBackground: {fileID: 1940721788}
   EnergyBarBackground: {fileID: 1940721790}
   EnergyBarForeground: {fileID: 1940721789}
+  DeathMenu: {fileID: 2047496522}
   HasFireHeldDown: 0
   EnergyBarMaxWidth: 0
   MaxEnergy: 1000
   CurrentEnergy: 0
   EnergyMultiplier: 0.5
   button: {fileID: 65284393}
+  OVRController: {fileID: 0}
+  OldOVRAccelerationValue: 0
+  DefaultSpawnPoint: {fileID: 157520463}
+  ResetAudio: {fileID: 979585410}
 --- !u!4 &979585405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4876655708856617126, guid: 8b0f7293559bb4f1984025a2c47d514f, type: 3}
   m_PrefabInstance: {fileID: 979585398}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &979585410
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979585399}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300001, guid: 1dd706bb85d8aef4e83a6229dbd62c36, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5a14ed24d3576e346b9866dbc5933ea2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &988002506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255075321803111245, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}
@@ -9323,6 +9460,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 87dc0b67e5fe70f40a31e17b0c0058b4, type: 3}
+--- !u!1 &2003624532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003624533}
+  m_Layer: 0
+  m_Name: MenuSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003624533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003624532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58.07, y: 23.319, z: 43.928}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012641948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255993950649386501, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}
@@ -9573,6 +9741,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
+--- !u!1 &2047496522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676180084438048692, guid: eceebf2335043af4d9bea4bbcbf853be, type: 3}
+  m_PrefabInstance: {fileID: 1940721784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050620202 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2255374245761706774, guid: 77831a6ff3be849f6a24b811fa110860, type: 3}

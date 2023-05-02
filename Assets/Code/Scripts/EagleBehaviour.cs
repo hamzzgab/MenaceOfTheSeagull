@@ -89,10 +89,18 @@ public class EagleBehaviour : MonoBehaviour
                     {
                         if (Time.time - LastAttackTime > DifferenceInAttacks)
                         {
-                            audio.Play();
-                            EagleAnimator.SetTrigger("Attack");
+                            
+                            
                             PlayerBehaviourScript playerBehaviourScript = Player.GetComponent<PlayerBehaviourScript>();
                             HealthScript playerHealthScript = Player.GetComponent<HealthScript>();
+                            if (playerHealthScript != null)
+                            {
+                                if(!playerHealthScript.IsDead) {
+                                    audio.Play();
+                                    EagleAnimator.SetTrigger("Attack");
+                                }
+                            }
+                            
                             if (playerHealthScript != null)
                             {
                                 if (GlobalsManager.Haptics)

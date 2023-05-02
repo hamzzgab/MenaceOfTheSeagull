@@ -30,6 +30,9 @@ public class PlayerBehaviourScript : MonoBehaviour
     [Header("GUI Elements - Energy bar")]
     public Image EnergyBarBackground;
     public Image EnergyBarForeground;
+
+    [Header("GUI Elements - Death Menu")]
+    public GameObject DeathMenu;
     
     [Header("Variables - Energy")]
     public bool HasFireHeldDown = false;
@@ -39,6 +42,14 @@ public class PlayerBehaviourScript : MonoBehaviour
     public float EnergyMultiplier = 0.001f;
 
     public GameObject button;
+
+    [Header("Variables - Related to OVR Input")]
+    public OVRPlayerController OVRController;
+    public float OldOVRAccelerationValue;
+
+    [Header("Variables - Related to Reset")]
+    public GameObject DefaultSpawnPoint;
+    public AudioSource ResetAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +64,12 @@ public class PlayerBehaviourScript : MonoBehaviour
         healthScript.HealthBarBackground = this.HealthBarBackground;
         EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;        
         GlobalsManager.Player = this.gameObject;
+        OVRController = this.GetComponent<OVRPlayerController>();
+        if (OVRController !=null)
+        {
+            OldOVRAccelerationValue = OVRController.Acceleration;
+
+        }
     }
 
     public void Reset()
@@ -62,6 +79,24 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         healthScript = this.GetComponent<HealthScript>();
         healthScript.SetHealth(100.0f);
+
+        healthScript.IsDead = false;
+        IsShowingDeathMenu = false;
+
+
+        //Reset the OVR controller values
+        OVRController.Acceleration = OldOVRAccelerationValue;
+
+        ResetAudio.Play();
+
+        DeathMenu.SetActive(false); // Hide the death screen
+
+        if(DefaultSpawnPoint != null)
+        {
+            this.gameObject.transform.position = DefaultSpawnPoint.transform.position;
+            this.gameObject.transform.rotation = DefaultSpawnPoint.transform.rotation;
+        }
+
     }
 
     public IEnumerator VibratorEx(float waitSec, float intensity)
@@ -81,30 +116,20 @@ public class PlayerBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TotalFoodUI.text = TotalFood.ToString();
-        TotalCoinsUI.text = TotalCoins.ToString();
-        if(this.healthScript.IsDead)
+        if (this.healthScript.IsDead)
         {
-            if(!IsShowingDeathMenu)
+            if (!IsShowingDeathMenu)
             {
                 //ShowMenu
                 IsShowingDeathMenu = true;
             }
         }
-        if(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) ||Input.GetMouseButton(0))
+        if (!this.healthScript.IsDead)
         {
-            if (GlobalsManager.Haptics)
-            {
-                StartCoroutine(VibratorEx(0.1f, 0.1f));
-            }
+            TotalFoodUI.text = TotalFood.ToString();
+            TotalCoinsUI.text = TotalCoins.ToString();
             
-            HasFireHeldDown = true;
-            CurrentEnergy = Mathf.Lerp(CurrentEnergy, MaxEnergy, EnergyMultiplier);
-        }
-        else
-        {
-            HasFireHeldDown = false;
-            if (CurrentEnergy > 0)
+            if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) || Input.GetMouseButton(0))
             {
                 CurrentEnergy = Mathf.Lerp(CurrentEnergy, 0.0f, EnergyMultiplier);
             }
@@ -137,16 +162,68 @@ public class PlayerBehaviourScript : MonoBehaviour
                 float CurrentHealth = healthScript.GetHealth();
 
                 if (CurrentHealth < 100.0f)
+                if (GlobalsManager.Haptics)
                 {
-                    TotalFood -= 5;
-                    CurrentHealth += 5;
+                    StartCoroutine(VibratorEx(0.1f, 0.1f));
+                }
 
-                    healthScript.SetHealth(CurrentHealth);
+                HasFireHeldDown = true;
+                CurrentEnergy = Mathf.Lerp(CurrentEnergy, MaxEnergy, EnergyMultiplier);
+            }
+            else
+            {
+                HasFireHeldDown = false;
+                if (CurrentEnergy > 0)
+                {
+                    CurrentEnergy = Mathf.Lerp(CurrentEnergy, 0.0f, EnergyMultiplier);
+                }
+            }
+            EnergyBarForeground.rectTransform.sizeDelta = new Vector3((EnergyBarMaxWidth / MaxEnergy) * CurrentEnergy, EnergyBarBackground.rectTransform.sizeDelta.y);
+            if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger) || Input.GetMouseButtonUp(0))
+            {
+                HasFireHeldDown = false;
+            }
+
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || Input.GetMouseButtonDown(1))
+            {
+                if (CurrentEnergy > 0)
+                {
+                    GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position + (CameraFront.transform.position - Camera.transform.position).normalized, Quaternion.identity);
+                    Rigidbody body = instantiated_object.GetComponent<Rigidbody>();
+
+                    body.AddForce((CameraFront.transform.position - Camera.transform.position).normalized * CurrentEnergy, ForceMode.Force);
+
+                }
+
+            }
+
+            if (OVRInput.GetDown(OVRInput.Button.Two))
+            {
+                if (TotalFood > 0)
+                {
+                    healthScript = this.GetComponent<HealthScript>();
+
+                    float CurrentHealth = healthScript.GetHealth();
+
+                    if (CurrentHealth < 100.0f)
+                    {
+                        TotalFood -= 5;
+                        CurrentHealth += 5;
+
+                        healthScript.SetHealth(CurrentHealth);
+                    }
                 }
             }
         }
-
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        else
+        {
+            if(IsShowingDeathMenu)
+            {
+                DeathMenu.SetActive(true);
+                OVRController.Acceleration = 0;
+            }
+        }
+        if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.R))
         {
             if (GlobalsManager.Haptics)
             {
