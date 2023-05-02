@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: CS7GV3-Assignments-2022-23
+message: Please copy this code for your Assignments
+type: software
+authors:
+  - given-names: Hamza
+    family-names: Gabajiwala
+    email: hamzajg16@gmail.com
+    affiliation: Mr
+  - given-names: Siddharth
+    family-names: Shenoy
+    email: siddh.shenoy@gmail.com
+    affiliation: Mr
+repository-code: 'https://github.com/hamzzgab/MenaceOfTheSeagul'
+abstract: >-
+  This is the project implementation for Augmented Reality 2022-23 (CS7GV4)
+keywords:
+  - CS7GV4
+license: MIT
+date-released: '2023-05-02'
