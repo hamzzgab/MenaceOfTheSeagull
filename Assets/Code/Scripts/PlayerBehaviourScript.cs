@@ -31,9 +31,6 @@ public class PlayerBehaviourScript : MonoBehaviour
     public Image EnergyBarBackground;
     public Image EnergyBarForeground;
 
-    [Header("GUI Elements - Death Menu")]
-    public GameObject DeathMenu;
-    
     [Header("Variables - Energy")]
     public bool HasFireHeldDown = false;
     public float EnergyBarMaxWidth;
@@ -42,6 +39,9 @@ public class PlayerBehaviourScript : MonoBehaviour
     public float EnergyMultiplier = 0.001f;
 
     public GameObject button;
+
+    [Header("GUI Elements - Death Menu")]
+    public GameObject DeathMenu;
 
     [Header("Variables - Related to OVR Input")]
     public OVRPlayerController OVRController;
@@ -55,17 +55,18 @@ public class PlayerBehaviourScript : MonoBehaviour
     void Start()
     {
         healthScript = this.GetComponent<HealthScript>();
-        if(healthScript == null)
+        if (healthScript == null)
         {
             healthScript = this.AddComponent<HealthScript>();
-            
+
         }
         healthScript.HealthBar = this.HealthBar;
         healthScript.HealthBarBackground = this.HealthBarBackground;
-        EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;        
+        EnergyBarMaxWidth = EnergyBarBackground.rectTransform.rect.width;
         GlobalsManager.Player = this.gameObject;
+
         OVRController = this.GetComponent<OVRPlayerController>();
-        if (OVRController !=null)
+        if (OVRController != null)
         {
             OldOVRAccelerationValue = OVRController.Acceleration;
 
@@ -91,12 +92,11 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         DeathMenu.SetActive(false); // Hide the death screen
 
-        if(DefaultSpawnPoint != null)
+        if (DefaultSpawnPoint != null)
         {
             this.gameObject.transform.position = DefaultSpawnPoint.transform.position;
             this.gameObject.transform.rotation = DefaultSpawnPoint.transform.rotation;
         }
-
     }
 
     public IEnumerator VibratorEx(float waitSec, float intensity)
@@ -116,6 +116,8 @@ public class PlayerBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TotalFoodUI.text = TotalFood.ToString();
+        TotalCoinsUI.text = TotalCoins.ToString();
         if (this.healthScript.IsDead)
         {
             if (!IsShowingDeathMenu)
@@ -126,42 +128,8 @@ public class PlayerBehaviourScript : MonoBehaviour
         }
         if (!this.healthScript.IsDead)
         {
-            TotalFoodUI.text = TotalFood.ToString();
-            TotalCoinsUI.text = TotalCoins.ToString();
-            
             if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) || Input.GetMouseButton(0))
             {
-                CurrentEnergy = Mathf.Lerp(CurrentEnergy, 0.0f, EnergyMultiplier);
-            }
-        }
-        EnergyBarForeground.rectTransform.sizeDelta = new Vector3((EnergyBarMaxWidth / MaxEnergy) * CurrentEnergy, EnergyBarBackground.rectTransform.sizeDelta.y);
-        if(OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger) || Input.GetMouseButtonUp(0))
-        {
-            HasFireHeldDown = false;
-        }        
-
-        if(OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || Input.GetMouseButtonDown(1))
-        {
-            if (CurrentEnergy > 0)
-            {
-                GameObject instantiated_object = GameObject.Instantiate(RockPrefab, Camera.transform.position + (CameraFront.transform.position - Camera.transform.position ).normalized , Quaternion.identity);
-                Rigidbody body = instantiated_object.GetComponent<Rigidbody>();
-
-                body.AddForce((CameraFront.transform.position - Camera.transform.position).normalized * CurrentEnergy, ForceMode.Force);
-
-            }
-
-        }
-
-        if (OVRInput.GetDown(OVRInput.Button.Two))
-        {
-            if (TotalFood - 5 > 0)
-            {
-                healthScript = this.GetComponent<HealthScript>();
-
-                float CurrentHealth = healthScript.GetHealth();
-
-                if (CurrentHealth < 100.0f)
                 if (GlobalsManager.Haptics)
                 {
                     StartCoroutine(VibratorEx(0.1f, 0.1f));
@@ -184,7 +152,7 @@ public class PlayerBehaviourScript : MonoBehaviour
                 HasFireHeldDown = false;
             }
 
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || Input.GetMouseButtonDown(1))
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || Input.GetMouseButtonDown(1))
             {
                 if (CurrentEnergy > 0)
                 {
@@ -199,7 +167,7 @@ public class PlayerBehaviourScript : MonoBehaviour
 
             if (OVRInput.GetDown(OVRInput.Button.Two))
             {
-                if (TotalFood > 0)
+                if (TotalFood - 5 > 0)
                 {
                     healthScript = this.GetComponent<HealthScript>();
 
@@ -214,35 +182,36 @@ public class PlayerBehaviourScript : MonoBehaviour
                     }
                 }
             }
+
+
+            if (OVRInput.Get(OVRInput.Touch.SecondaryThumbRest))
+            {
+                if (GlobalsManager.Haptics)
+                {
+                    StartCoroutine(Vibrator());
+                }
+                if (TotalCoins - 5 > 0)
+                {
+                    TotalCoins -= 5;
+                    TotalFood += 5;
+                }
+            }
         }
         else
         {
-            if(IsShowingDeathMenu)
+            if (IsShowingDeathMenu)
             {
                 DeathMenu.SetActive(true);
                 OVRController.Acceleration = 0;
             }
         }
-        if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.R))
+        if (OVRInput.GetDown(OVRInput.Button.One))
         {
             if (GlobalsManager.Haptics)
             {
                 StartCoroutine(Vibrator());
             }
             Reset();
-        }
-
-        if (OVRInput.Get(OVRInput.Touch.SecondaryThumbRest))
-        {
-            if (GlobalsManager.Haptics)
-            {
-                StartCoroutine(Vibrator());
-            }
-            if (TotalCoins - 5 > 0)
-            {
-                TotalCoins -= 5;
-                TotalFood += 5;
-            }
         }
 
         TextMeshPro tmp = button.GetComponent<TextMeshPro>();
@@ -259,10 +228,10 @@ public class PlayerBehaviourScript : MonoBehaviour
     }
     public void DecreaseFoodFromInventory(int TotalFoodItems)
     {
-        if(this.TotalFood > 0)
+        if (this.TotalFood > 0)
         {
             this.TotalFood -= TotalFoodItems;
-            if(this.TotalFood < 0)
+            if (this.TotalFood < 0)
             {
                 this.TotalFood = 0;
             }
@@ -272,7 +241,7 @@ public class PlayerBehaviourScript : MonoBehaviour
     {
         if (this.TotalCoins > 0)
         {
-            this.TotalCoins-= TotalCoins;
+            this.TotalCoins -= TotalCoins;
             if (this.TotalCoins < 0)
             {
                 this.TotalCoins = 0;
