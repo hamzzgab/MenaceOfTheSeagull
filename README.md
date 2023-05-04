@@ -32,7 +32,7 @@
         <li><a href="#opening-project">Opening Project</a></li>
       </ul>
     </li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgements">Acknowledgments</a></li>
     <li><a href="#authors">Authors</a></li>
   </ol>
 </details>
