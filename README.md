@@ -51,7 +51,9 @@ This project has been developed using Unity version **2021.3.17f1**.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Demonstration
-[![Youtube Video](https://img.youtube.com/vi/aJ3FRZv5gbU/0.jpg)](https://www.youtube.com/watch?v=aJ3FRZv5gbU)
+<div align='center'>
+  <a href="https://www.youtube.com/watch?v=aJ3FRZv5gbU"><img src="https://img.youtube.com/vi/aJ3FRZv5gbU/0.jpg"></a>
+</div>
 
 ## Getting Started
 
