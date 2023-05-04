@@ -26,6 +26,7 @@
 This project has been developed in partial fulfillment of the requirements for the MSc in Computer Science, Augmented and Virtual Reality at Trinity College, The University of Dublin, 2022-2023.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Authors
 * Hamza Gabajiwala (hamzajg@gmail.com)
 * Siddharth Shenoy (siddh.shenoy@gmail.com)
