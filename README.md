@@ -29,15 +29,11 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#opening-project">Opening Project</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#authors">Authors</a></li>
   </ol>
 </details>
 
@@ -82,7 +78,7 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="left">(<a href="#readme-top">back to top</a>)</p>
 
-## Acknowledgement
+## Acknowledgements
 
 This project has been developed in partial fulfillment of the requirements for the MSc in Computer Science, Augmented and Virtual Reality at Trinity College, The University of Dublin, 2022-2023.
 
