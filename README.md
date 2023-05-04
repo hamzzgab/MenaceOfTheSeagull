@@ -38,6 +38,7 @@
 </details>
 
 ## About the Project
+Developed a Virtual Reality application where the user can experience the menace of the Seagull. In this simulation, the user can play the game using an Oculus Quest 2 device. The HMD controllers would be in the hands of the user to move and explore the world. The world will be filled with random boxes around random locations, and the user can interact with these boxes using the controllers. While the user interacts with the box, the box will either give the user a small reward or surprise them with an angry Seagull trying to chase and attack them. The user will have a separate health bar which will deplete if they do not defend themselves from the angry Seagull. The box will also give the user haptic feedback via the controllers and haptic feedback whenever a Seagull attacks them.
 
 ### Built With
 
